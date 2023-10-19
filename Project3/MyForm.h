@@ -210,6 +210,7 @@ namespace Project3 {
 			this->FirstAns->FlatAppearance->BorderColor = System::Drawing::SystemColors::ActiveCaption;
 			this->FirstAns->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->FirstAns->Font = (gcnew System::Drawing::Font(L"Ravie", 18));
+			this->FirstAns->ForeColor = System::Drawing::SystemColors::Highlight;
 			this->FirstAns->Location = System::Drawing::Point(12, 350);
 			this->FirstAns->Name = L"FirstAns";
 			this->FirstAns->Size = System::Drawing::Size(180, 185);
@@ -226,6 +227,7 @@ namespace Project3 {
 			this->SecAns->FlatAppearance->BorderColor = System::Drawing::SystemColors::ActiveCaption;
 			this->SecAns->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->SecAns->Font = (gcnew System::Drawing::Font(L"Ravie", 18));
+			this->SecAns->ForeColor = System::Drawing::SystemColors::Highlight;
 			this->SecAns->Location = System::Drawing::Point(212, 410);
 			this->SecAns->Name = L"SecAns";
 			this->SecAns->Size = System::Drawing::Size(180, 185);
@@ -243,6 +245,7 @@ namespace Project3 {
 			this->ThrAns->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->ThrAns->Font = (gcnew System::Drawing::Font(L"Ravie", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->ThrAns->ForeColor = System::Drawing::SystemColors::Highlight;
 			this->ThrAns->Location = System::Drawing::Point(432, 410);
 			this->ThrAns->Name = L"ThrAns";
 			this->ThrAns->Size = System::Drawing::Size(180, 185);
@@ -259,6 +262,7 @@ namespace Project3 {
 			this->FourAns->FlatAppearance->BorderColor = System::Drawing::SystemColors::ActiveCaption;
 			this->FourAns->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->FourAns->Font = (gcnew System::Drawing::Font(L"Ravie", 18));
+			this->FourAns->ForeColor = System::Drawing::SystemColors::Highlight;
 			this->FourAns->Location = System::Drawing::Point(632, 350);
 			this->FourAns->Name = L"FourAns";
 			this->FourAns->Size = System::Drawing::Size(180, 185);
@@ -297,34 +301,35 @@ namespace Project3 {
 #pragma endregion
 
 
-private: int allcount = 0;
-private: int correctcount = 0;
-private: int CorrectAns;
+private: int allcount = 0; // всего кол-во ответов
+private: int correctcount = 0; // правильные
+private: int CorrectAns; // под какой кнопкой правильный ответ
 private: int FunAns;
-private: int SunAns;
+private: int SunAns; // неправильные ответы
 private: int TunAns;
-private: bool play = false;
-private: String^ CorFilename;
-private: int CorFilenum;
+private: bool play = false; // играем нет
+private: String^ CorFilename;// имя файла с ответом
+private: int CorFilenum; // его номер
+
+	   //функции
+private: void Game();// игра
+private: void RandomPicture();// картинка правильная
+private: String^ RandomPictureNameF(); // неправильная с рандомным число -
+private: String^ RandomPictureNameS();// неправильная с рандомным число -
+private: String^ RandomPictureNameT();// неправильная с рандомным число -
+private: void GenUncorrect(); // объединение вверхних
+private: void Answer(); // счет правильного
+
+	   //события
+private: System::Void ButtonLeave_Click(System::Object^ sender, System::EventArgs^ e); // ливнуть
+private: System::Void StartButton_Click(System::Object^ sender, System::EventArgs^ e); // начать
+private: System::Void ButtonInfo_Click(System::Object^ sender, System::EventArgs^ e); // инфо
 
 
-private: void Game();
-private: void RandomPicture();
-private: String^ RandomPictureNameF();
-private: String^ RandomPictureNameS();
-private: String^ RandomPictureNameT();
-private: void GenUncorrect();
-private: void Answer();
-
-private: System::Void ButtonLeave_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void StartButton_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void ButtonInfo_Click(System::Object^ sender, System::EventArgs^ e);
-
-
-private: System::Void FirstAns_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void SecAns_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void ThrAns_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void FourAns_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void FirstAns_Click(System::Object^ sender, System::EventArgs^ e); // кнопки
+private: System::Void SecAns_Click(System::Object^ sender, System::EventArgs^ e);// кнопки
+private: System::Void ThrAns_Click(System::Object^ sender, System::EventArgs^ e);// кнопки
+private: System::Void FourAns_Click(System::Object^ sender, System::EventArgs^ e);// кнопки
 
 };
 }

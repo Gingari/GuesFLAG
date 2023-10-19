@@ -20,14 +20,14 @@ void Project3::MyForm::Game()
 }
 void Project3::MyForm::RandomPicture()
 {
-    Random^ rand1 = gcnew Random();
-    String^ projectPath = System::IO::Path::GetDirectoryName(Application::StartupPath);
-    String^ folderPath = System::IO::Path::Combine(projectPath, "Files");
-    array<String^>^ fileNames = System::IO::Directory::GetFiles(folderPath);
-    CorFilenum = rand1->Next(0, fileNames->Length);
-    String^ Filepath = fileNames[CorFilenum];   
-    FlagPicture->Image = Image::FromFile(fileNames[CorFilenum]);
-    CorFilename = System::IO::Path::GetFileNameWithoutExtension(Filepath);
+    Random^ rand1 = gcnew Random(); // рандомное что то
+    String^ projectPath = System::IO::Path::GetDirectoryName(Application::StartupPath); // узнаём путь к игре
+    String^ folderPath = System::IO::Path::Combine(projectPath, "Files"); // находим папку с картинками
+    array<String^>^ fileNames = System::IO::Directory::GetFiles(folderPath); // получаем все файлы
+    CorFilenum = rand1->Next(0, fileNames->Length); // рандомим случайный файл
+    String^ Filepath = fileNames[CorFilenum];   // узнаём его путь
+    FlagPicture->Image = Image::FromFile(fileNames[CorFilenum]); //вставляем по пути
+    CorFilename = System::IO::Path::GetFileNameWithoutExtension(Filepath); // узнаём имя
 }
 String^ Project3::MyForm::RandomPictureNameF()
 {
@@ -35,7 +35,7 @@ String^ Project3::MyForm::RandomPictureNameF()
     String^ projectPath = System::IO::Path::GetDirectoryName(Application::StartupPath);
     String^ folderPath = System::IO::Path::Combine(projectPath, "Files");
     array<String^>^ fileNames = System::IO::Directory::GetFiles(folderPath);
-    int Filenum = Math::Abs(rand->Next(0, fileNames->Length)-15);
+    int Filenum = Math::Abs(rand->Next(0, fileNames->Length)-46);
     String^ Filepath = fileNames[Filenum];
     return System::IO::Path::GetFileNameWithoutExtension(Filepath);
 }
@@ -116,7 +116,7 @@ System::Void Project3::MyForm::StartButton_Click(System::Object^ sender, System:
 {
     MainLabel->Enabled = false;
     MainLabel->Visible = false;
-    StartButton->Enabled = false;
+    StartButton->Enabled = false; // что то включаем что то отключаем
     StartButton->Visible = false;
     FirstAns->Enabled = true;
     FirstAns->Visible = true;
@@ -127,12 +127,12 @@ System::Void Project3::MyForm::StartButton_Click(System::Object^ sender, System:
     FourAns->Enabled = true;
     FourAns->Visible = true;
     play = true;
-    String^ projectPath = System::IO::Path::GetDirectoryName(Application::StartupPath);
-    String^ folderPath = System::IO::Path::Combine(projectPath, "sound.wav");
-    System::Media::SoundPlayer^ simpleSound = gcnew
+    String^ projectPath = System::IO::Path::GetDirectoryName(Application::StartupPath); //узнаём путь до музыки
+    String^ folderPath = System::IO::Path::Combine(projectPath, "sound.wav"); // находим музыку
+    System::Media::SoundPlayer^ simpleSound = gcnew // создаём новый Sp
     System::Media::SoundPlayer(folderPath);
-    simpleSound->PlayLooping();
-    Game();
+    simpleSound->PlayLooping();//бесконечно играем
+    Game(); 
 
 }
 
